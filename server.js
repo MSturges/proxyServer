@@ -2,6 +2,7 @@ var express = require('express')
 var path = require('path')
 var bodyParser = require('body-parser')
 var cors = require('cors')
+
 var ics_get = require('./routes/ics_get')
 
 var app = express()
@@ -15,10 +16,12 @@ app.use(function(req, res, next) {
   next();
 });
 
+
+
 app.use('/', ics_get)
 
 app.use(function(req, res, next) {
-  var err = new Error('This is an API')
+  var err = new Error('This is a proxy Server')
   err.status = 404
   next(err)
 })
